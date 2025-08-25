@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import rpg.world.model.Usuario;
 import rpg.world.repository.UsuarioRepository;
+import rpg.world.service.UsuarioService;
 
 import java.util.List;
 
@@ -13,16 +14,10 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioService usuarioService;
 
     @PostMapping
     public Usuario criarUsuario(@RequestBody Usuario usuario){
-      return usuarioRepository.save(usuario);
+      return usuarioService.criarUsuario(usuario);
     }
-
-    @GetMapping
-    public List<Usuario> buscarUsuarios(){
-        return usuarioRepository.findAll();
-    }
-
 }
